@@ -1,6 +1,38 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Theme Variables --- */
+/* Light Mode */
+:root {
+    /* --body-bg: #f0f4f8;                        */
+   --body-bg: #e2e8f0;
+    --container-bg: linear-gradient(135deg, #3b82f6, #1d4ed8); /* Vibrant royal blue gradient for the card */
+    --text-color: #1e293b;                                      /* Dark text color for light mode */
+    --card-text-color: #ffffff;                                 /* White text inside the blue card */
+    --input-bg: #ffffff;
+    --input-text: #1e293b;
+}
+
+body.dark-mode {
+    /* --body-bg: #0f172a;                                          */
+    --body-bg: #0b0f19;
+    --container-bg: linear-gradient(135deg, #1e293b, #0f172a); /* Dark muted navy gradient for the card */
+    --text-color: #f8fafc;                                      /* Light text color for dark mode */
+    --card-text-color: #f1f5f9;                                 /* Crisp light grey text inside dark card */
+    --input-bg: #334155;
+    --input-text: #ffffff;
+}
+
+
+
+/* --- Base Layout --- */
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
 }
 
 .weather-container{
@@ -8,12 +40,14 @@
     width: 400px;
     margin: 50px auto;
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 15px;
     min-height: 150px;
     gap: 15px;
-    background-image: linear-gradient(skyblue,green);
+    background-image: linear-gradient(rgb(5, 5, 64),skyblue);
     border-radius: 10px;
+    transition: background-image 0.3s ease;
 }
 
 .weather-container h1{
@@ -22,20 +56,56 @@
     text-shadow: 0px 0px 5px black;
 }
 
+/* --- Theme Button Styling --- */
+.theme-btn {
+    align-self: flex-end; /* Pushes the toggle to the top right of the container */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
 #city-name{
     padding: 8px;
     border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid #ccc;
 }
 
 #search-btn{
-    background-color: black;
-    color: white;
+    text-wrap: wrap;
+    width: 50%;
+   background-color: var(--text-color); /* Changes from dark slate to bright white/grey */
+    color: var(--body-bg);
     padding: 8px;
     font-size: 18px;
     font-weight: 600;
     border-radius: 7px;
-    box-shadow: 0px 0px 7px white;
+    border: none;
+    cursor: pointer;
 }
+
 #search-btn:hover{
     background-color: blue;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 7px rgb(210, 157, 43);
+}
+
+#weather-data{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: var(--card-text-color);
+    text-align: center;
 }
